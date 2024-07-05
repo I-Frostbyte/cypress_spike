@@ -11,6 +11,8 @@ on:
         description: v1.0.0
         required: true
         default: v1.0.0
+  pull_request:
+    types: [opened, synchronize, reopened]
 
 jobs:
   trigger:
