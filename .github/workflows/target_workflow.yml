@@ -23,7 +23,7 @@ jobs:
           repo_owner="I-Frostbyte" 
           repo_name="cypress_spike_tests"  
           event_type="trigger-workflow" 
-          service=${{ github.event.inputs.target_service }}"
+          service="${{ github.event.inputs.target_service }}"
           version="${{ github.event.inputs.target_version }}"
   
           curl -L \
