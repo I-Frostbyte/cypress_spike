@@ -20,6 +20,7 @@ jobs:
 
     steps:
       - name: Trigger Workflow in Another Repository
+        id: trigger_target
         run: |
           # Set the required variables
           repo_owner="I-Frostbyte" 
