@@ -1,24 +1,40 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Outlet, createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Login, SignUp } from './pages/auth'
+import { Error } from './pages'
+import { Success, Gg } from './pages/main';
+
+const MyApp = () => {
+  return (
+    <div className='[&_*]:transition-transform [&_*]:ease-linear [&_*]:duration-200 mx-auto'>
+      <Outlet />
+    </div>
+  )
+}
+
+const router = createBrowserRouter([
+  {
+    element: <MyApp />,
+    errorElement: <Error />,
+    children: [
+      { path: "/", element: <Login />},
+      { path: "/main", children: [
+        { path: "success", element: <Success />},
+        { path: "google", element: <Gg />}
+      ]},
+      { path: "/auth", children: [
+        { path: "login", element: <Login />},
+        { path: "sign-up", element: <SignUp />}
+      ]}
+    ]
+  }
+])
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <RouterProvider router={router} />
     </div>
   );
 }
