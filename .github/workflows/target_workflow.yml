@@ -8,9 +8,9 @@ on:
         required: true
         default: cypress_spike_tests
       target_version:
-        description: 1.0.0
+        description: v1.0.0
         required: true
-        default: 1.0.0
+        default: v1.0.0
   pull_request:
     types: [opened, synchronize, reopened]
 
